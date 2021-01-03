@@ -9,7 +9,7 @@ Email: jared.peterson@hey.com
 
 from pathlib import Path
 
-from file_utils.file_utils import write_content_as_file, load_content_from_file
+import pyhandy as ph
 
 
 def test_write_content_as_file(tmpdir):
@@ -17,7 +17,7 @@ def test_write_content_as_file(tmpdir):
     test_file_name = 'write_content_as_file_test_file.txt'
 
     # use our utility method to write the file.
-    write_content_as_file(test_content, test_file_name, tmpdir)  # tmpdir should be supplied by pytest.
+    ph.write_content_as_file(test_content, test_file_name, tmpdir)  # tmpdir should be supplied by pytest.
 
     # read the contents of the file back out so that we can compare contents.
     with open(Path(tmpdir, test_file_name), 'r') as test_file:
@@ -35,6 +35,6 @@ def test_load_content_from_file(tmpdir):
         test_file.write(test_content)
 
     # load the content using our utility method.
-    assert_content = load_content_from_file(test_file_name, tmpdir)  # tmpdir should be supplied by pytest.
+    assert_content = ph.load_content_from_file(test_file_name, tmpdir)  # tmpdir should be supplied by pytest.
 
     assert assert_content == test_content
