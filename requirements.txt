@@ -1,0 +1,4 @@
+# PyHandy is a simple Python library for handling basic IO operations.
+
+pytest >= 6.2.1
+pandas >= 1.0.3
