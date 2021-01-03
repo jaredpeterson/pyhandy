@@ -1,10 +1,7 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-"""
-Common file/directory utilities.
-
-Author: Jared Peterson
-Email: jared.peterson@hey.com
+"""PyHandy is a simple Python library for handling basic IO operations.
 """
 
 from datetime import datetime
@@ -16,9 +13,16 @@ from typing import List
 
 import pandas as pd
 
+__author__ = 'Jared Peterson'
+__license__ = 'apache-2.0'
+__maintainer__ = 'Jared Peterson'
+__email__ = 'jared.peterson@hey.com'
+__version__ = '0.0.1'
+__status__ = 'Development'
+
 
 def create_new_output_dir(prefix: str = './') -> str:
-    """ Creates a new directory that output data can be written to.
+    """Creates a new directory that output data can be written to.
 
     :param prefix a str that will be concatenated with the generated name.
     :return: a string containing the output directory name.
@@ -33,7 +37,7 @@ def create_new_output_dir(prefix: str = './') -> str:
 
 
 def list_filenames_in_dir(path_to_dir: str) -> List[str]:
-    """ Return a list of only filenames within a directory.
+    """Return a list of only filenames within a directory.
 
     :param path_to_dir: a str containing the path to the directory.
     :return: a list containing only the filenames in the directory.
@@ -44,7 +48,7 @@ def list_filenames_in_dir(path_to_dir: str) -> List[str]:
 
 
 def copy_files_to_dir(path_to_dir: str, files_to_copy=None) -> None:
-    """ Copy a list of file paths to a destination directory.
+    """Copy a list of file paths to a destination directory.
 
     :param path_to_dir: a str containing the path to the destination directory.
     :param files_to_copy: a list containing the files to copy.
@@ -62,7 +66,7 @@ def copy_files_to_dir(path_to_dir: str, files_to_copy=None) -> None:
 
 
 def write_content_as_file(content: str, file_name: str, path_to_dir: str = '.') -> None:
-    """ This function will write the string content you pass it to the file specified.
+    """This function will write the string content you pass it to the file specified.
 
     :param content: the str content to write.
     :param file_name: the name of the file to create and write the content to.
@@ -74,7 +78,7 @@ def write_content_as_file(content: str, file_name: str, path_to_dir: str = '.') 
 
 
 def load_content_from_file(file_name: str, path_to_dir: str = '.') -> str:
-    """ This function will load the content of a file and return it as a string.
+    """This function will load the content of a file and return it as a string.
 
     :param file_name: a str containing the name of the file to read.
     :param path_to_dir: a str containing the path of the directory where the file lives.
@@ -88,7 +92,7 @@ def load_content_from_file(file_name: str, path_to_dir: str = '.') -> str:
 
 
 def generate_csv_for_dir(path_to_documents_dir: str, path_to_csv_file: str, delimiter: str = '|') -> None:
-    """ This function will build a csv file where each row in the csv file represents a document in the directory.
+    """This function will build a csv file where each row in the csv file represents a document in the directory.
 
     :param path_to_documents_dir: a string containing the path to the directory to use.
     :param path_to_csv_file: a string containing the path of the .csv file to generate.
