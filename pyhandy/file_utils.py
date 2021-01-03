@@ -17,27 +17,28 @@ __author__ = 'Jared Peterson'
 __license__ = 'apache-2.0'
 __maintainer__ = 'Jared Peterson'
 __email__ = 'jared.peterson@hey.com'
-__version__ = '0.0.1'
+__version__ = '0.0.2'
 __status__ = 'Development'
 
 
 def create_new_output_dir(prefix: str = './') -> str:
     """Creates a new directory that output data can be written to.
 
-    :param prefix a str that will be concatenated with the generated name.
+    :param prefix a str that will be concatenated with the generated name... defaults to the current directory.
     :return: a string containing the output directory name.
     """
 
     # use a nice string representation of the date as the directory name... also use prefix.
-    output_dir_path = str(Path(f"{prefix}{datetime.now().strftime('%m_%d_%Y_%H_%M_%S')}"))
+    prefix_as_path = Path(prefix)
+    output_dir_path = str(prefix_as_path / Path(f"{datetime.now().strftime('%m_%d_%Y_%H_%M_%S')}"))
 
     # create the directory and return name... makedirs ensure that parent dirs are created as well.
     makedirs(output_dir_path)
     return output_dir_path
 
 
-def list_filenames_in_dir(path_to_dir: str) -> List[str]:
-    """Return a list of only filenames within a directory.
+def list_paths_to_files_in_dir(path_to_dir: str) -> List[str]:
+    """Return a list of the paths of only the files (not sub-directories) within a directory.
 
     :param path_to_dir: a str containing the path to the directory.
     :return: a list containing only the filenames in the directory.
@@ -47,7 +48,7 @@ def list_filenames_in_dir(path_to_dir: str) -> List[str]:
     return list((str(file_or_dir) for file_or_dir in Path(path_to_dir).iterdir() if file_or_dir.is_file()))
 
 
-def copy_files_to_dir(path_to_dir: str, files_to_copy=None) -> None:
+def copy_files_to_dir(path_to_dir: str, files_to_copy: List = None) -> None:
     """Copy a list of file paths to a destination directory.
 
     :param path_to_dir: a str containing the path to the destination directory.
@@ -58,7 +59,8 @@ def copy_files_to_dir(path_to_dir: str, files_to_copy=None) -> None:
         files_to_copy = []
 
     # make sure that the destination directory exists.
-    makedirs(path_to_dir)
+    if not Path(path_to_dir).exists():
+        makedirs(path_to_dir)
 
     # iterate over the files copying them to the destination.
     for file_to_copy in files_to_copy:
@@ -103,7 +105,7 @@ def generate_csv_for_dir(path_to_documents_dir: str, path_to_csv_file: str, deli
     file_data_frame = pd.DataFrame(columns=['filename', 'text'])
 
     # list the files in the directory.
-    filenames_in_documents_dir = list_filenames_in_dir(path_to_documents_dir)
+    filenames_in_documents_dir = list_paths_to_files_in_dir(path_to_documents_dir)
 
     # iterate over the list of files and read the content
     for filename_in_documents_dir in filenames_in_documents_dir:
