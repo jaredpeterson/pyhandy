@@ -12,4 +12,9 @@ __version__ = '0.0.2'
 __status__ = 'Development'
 
 # grab everything in file_utils.py
-from .file_utils import *
+from .file_utils import create_new_output_dir, \
+    list_paths_to_files_in_dir, \
+    copy_files_to_dir, \
+    write_content_as_file, \
+    load_content_from_file, \
+    generate_csv_for_dir
