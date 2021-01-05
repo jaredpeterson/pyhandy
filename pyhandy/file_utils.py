@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-"""PyHandy is a simple Python library for handling basic IO operations.
+"""Utility functions for handling basic file IO.
 """
 
 from datetime import datetime
@@ -12,13 +12,6 @@ from shutil import copy
 from typing import List
 
 import pandas as pd
-
-__author__ = 'Jared Peterson'
-__license__ = 'apache-2.0'
-__maintainer__ = 'Jared Peterson'
-__email__ = 'jared.peterson@hey.com'
-__version__ = '0.0.3'
-__status__ = 'Development'
 
 
 def create_new_output_dir(prefix: str = './') -> str:

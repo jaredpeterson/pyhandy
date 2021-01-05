@@ -1,17 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-"""PyHandy is a simple Python library for handling basic IO operations.
+"""Unit tests for txt_utils.py.
 """
 
 from pyhandy import remove_multiple_newlines_in_txt
-
-__author__ = 'Jared Peterson'
-__license__ = 'apache-2.0'
-__maintainer__ = 'Jared Peterson'
-__email__ = 'jared.peterson@hey.com'
-__version__ = '0.0.3'
-__status__ = 'Development'
 
 
 def test_remove_multiple_newlines_in_txt():

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-"""PyHandy is a simple Python library for handling basic IO operations.
+"""Unit tests for file_utils.py.
 """
 
 from os import makedirs
@@ -12,13 +12,6 @@ from pyhandy import create_new_output_dir, \
     copy_files_to_dir, \
     write_content_as_file, \
     load_content_from_file
-
-__author__ = 'Jared Peterson'
-__license__ = 'apache-2.0'
-__maintainer__ = 'Jared Peterson'
-__email__ = 'jared.peterson@hey.com'
-__version__ = '0.0.3'
-__status__ = 'Development'
 
 
 def test_create_new_output_dir(tmpdir):
